@@ -44,4 +44,4 @@ func main() {
 ## TODO
 - [ ] Add react dev server support
 ## Credits
-[WebsocketProxy](github.com/koding/websocketproxy)
+[WebsocketProxy](https://github.com/koding/websocketproxy)
