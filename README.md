@@ -2,11 +2,10 @@
 [Gin](https://github.com/gin-gonic/gin) middleware for serving spa development server and spa static files.
 
 ## Installation
-Install the package with command line:
 
     go get github.com/frozturk/spa
 
-## Example Usage
+## Example
 ```go
 package main
 
