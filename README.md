@@ -1,4 +1,4 @@
-# gin-spa
+# spa
 [Gin](https://github.com/gin-gonic/gin) middleware for serving spa development server and spa static files.
 
 ## Installation
