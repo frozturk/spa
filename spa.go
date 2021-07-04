@@ -18,7 +18,6 @@ type spa struct {
 	config             Config
 	isDevServerStarted bool
 	url                *url.URL
-	urlString          string
 }
 
 func (s *spa) startDevServer() {
@@ -59,7 +58,6 @@ func (s *spa) startDevServer() {
 func (s *spa) devServerStarted(urlString string) {
 	url, _ := url.Parse(urlString)
 	s.url = url
-	s.urlString = strings.TrimRight(s.url.String(), "/")
 	s.isDevServerStarted = true
 }
 
@@ -77,7 +75,8 @@ func (s *spa) proxyHttp(c *gin.Context) {
 	client := &http.Client{}
 	resp, err := client.Do(request)
 	if err != nil {
-		c.Status(http.StatusNotFound)
+		c.AbortWithStatus(http.StatusNotFound)
+		return
 	}
 	defer resp.Body.Close()
 	body, _ := ioutil.ReadAll(resp.Body)
@@ -124,5 +123,4 @@ func UseAngularCliServer(config Config) gin.HandlerFunc {
 	return func(c *gin.Context) {
 		spa.serveSPA(c)
 	}
-
 }
